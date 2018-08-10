@@ -1,8 +1,11 @@
 //SETUP
-const express = require("express"),
+const bodyParser = require("body-parser"),
+  mongoose = require("mongoose"),  
+  express = require("express"),
   app = express();
 
 app.set("view engine", "ejs");
+app.use(express.static("public"));
 
 //ROUTES
 //Direct Route
