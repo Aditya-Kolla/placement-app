@@ -6,7 +6,8 @@ const LocalStrategy         = require("passport-local"),
   express                   = require("express"),
   app                       = express();
 
-const User = require('./models/user');
+const User  = require('./models/user'),
+  Company   = require('./models/company');
 
 //CONFIGURE APP
 app.set("view engine", "ejs");
@@ -33,10 +34,82 @@ app.use((req, res, next) => {
 
 //ROUTES
 //Direct Route
-app.get("/", isLoggedIn, (req, res) => {
+app.get("/", (req, res) => {
   res.render("index");
 });
 
+//COMPANY ROUTES
+//INDEX ROUTE
+app.get("/companies", isLoggedIn, (req, res) => {
+  Company.find({}, (err, foundCompanies) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.render("companies/index", { companies: foundCompanies });
+    }
+  });
+});
+
+//NEW ROUTE
+app.get("/companies/new", isLoggedIn, (req, res) => {
+  res.render("companies/new");
+});
+
+//CREATE ROUTE
+app.post("/companies", isLoggedIn, (req, res) => {
+  Company.create(req.body.company, (err, createdBlog) => {
+    if (err) {
+      console.log(err);
+    }
+    else {
+      res.redirect("/companies");
+    }
+  });
+});
+
+//SHOW ROUTE
+app.get("/companies/:id", isLoggedIn, (req, res) => {
+  Company.findById(req.params.id, (err, foundCompany) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.render("companies/show", { company: foundCompany });
+    }
+  });
+});
+
+//EDIT ROUTE
+app.get("/companies/:id/edit", isLoggedIn, (req, res) => {
+  Company.findById(req.params.id, (err, foundCompany) => {
+    if (err) {
+      res.redirect("/companies");
+    } else {
+      res.render("companies/edit", { company: foundCompany });
+    }
+  });
+});
+
+//UPDATE ROUTE
+app.put("/companies/:id", isLoggedIn, (req, res) => {
+  Company.findByIdAndUpdate(req.params.id, req.body.company, (err, updatedBlog) => {
+    if (err) {
+      res.redirect("/");
+    } else {
+      res.redirect("/companies/" + req.params.id);
+    }
+  });
+});
+
+//DELETE ROUTE
+app.delete("/companies/:id", isLoggedIn, (req, res) => {
+  Company.findByIdAndRemove(req.params.id, err => {
+    if (err) {
+      res.redirect("/companies");
+    } else {
+      res.redirect("/companies");
+    }
+  });
+});
 
 //AUTH ROUTES
 //get signup page
@@ -53,7 +126,7 @@ app.post("/signup", (req, res) => {
       return res.render("signup");
     }
     passport.authenticate("local")(req, res, () => {
-      res.redirect("/");
+      res.redirect("/companies");
     });
   });
 });
@@ -65,7 +138,7 @@ app.get("/login", (req, res) => {
 
 //handling login logic
 app.post("/login", passport.authenticate("local", {
-  successRedirect: "/",
+  successRedirect: "/companies",
   failureRedirect: "/login"
 }), (req, res) => {
 });

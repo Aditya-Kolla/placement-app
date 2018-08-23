@@ -1,0 +1,22 @@
+.container.main {
+    margin-top: 5.0em;
+}
+
+.card{
+    margin: 3%;
+}
+
+.card-img-top {
+    width: 100%;
+    height: 15vw;
+    object-fit: cover;
+}
+
+.center-container {
+    width: 50%;
+    margin: 0 auto;
+}
+
+#delete{
+    display: inline;
+}

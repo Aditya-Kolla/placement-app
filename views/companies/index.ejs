@@ -1,0 +1,20 @@
+<% include ../partials/header.ejs %>
+
+<div class="container main">
+    <div class="row">
+        <% companies.forEach(company => { %>
+            <div class="col-lg-6">
+                <div class="card">
+                    <h3 class="card-header"><%= company.name %></h3>
+                    <div class="card-body">
+                        <img src="<%= company.logo %>" alt="Company Logo" class="card-img-top">
+                        <h5 class="card-title">About</h6>
+                        <p class="card-text"><%- company.about.substring(0, 100) %>..</p>
+                        <a href="/companies/<%= company._id %>" class="btn btn-primary btn-md">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+</div>
+<% include ../partials/footer.ejs %>
