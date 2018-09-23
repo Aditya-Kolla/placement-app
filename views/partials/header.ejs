@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
         crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
     <link rel="stylesheet" href="/stylesheets/app.css">
   </head>
   <body>
@@ -17,8 +18,13 @@
         </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/companies">Companies</a>
+                    <li class="nav-item active dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" href="#">Companies</a>
+                        <div class="dropdown-menu">
+                            <a href="/companies" class="dropdown-item">View</a>
+                            <div class="dropdown-divider"></div>
+                            <a href="/companies/new" class="dropdown-item">Create</a>
+                        </div>
                     </li>
                     <% if(!currentUser){ %>
                         <li class="nav-item">
@@ -28,6 +34,9 @@
                             <a class="nav-link" href="/signup">Sign Up</a>
                         </li>
                     <% } else { %>
+                        <li class="nav-item">
+                            <a href="/profile" class="nav-link">Welcome, <%= currentUser.name.first %></a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/logout">Logout</a>
                         </li>

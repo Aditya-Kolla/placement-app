@@ -4,13 +4,28 @@
         <form action="/signup" method="POST" style="width: 30%; margin: 10% 30% 50% 70%">
             <div>
                 <div class="form-group">
-                    <label for="username">Registration Number</label>
-                    <input type="text" name="username" id="username" class="form-control" placeholder="Username">
-                    <small id="usernameHelp" class="form-text text-muted">Same as your registration number.</small>
+                    <label for="username">Email</label>
+                    <input type="text" name="username" id="username" class="form-control" placeholder="Username" required>
+                    <small id="usernameHelp" class="form-text text-muted">Same as your outlook ID.</small>
+                </div>
+                <div class="form-group">
+                    <label for="fname">First Name</label>
+                    <input type="text" name="name[first]" class="form-control" id="fname"
+                    placeholder="First Name" required>
+                </div>
+                <div class="form-group">
+                    <label for="mname">Middle Name</label>
+                    <input type="text" name="name[middle]" class="form-control" id="mname"
+                    placeholder="Middle Name">
+                </div>
+                <div class="form-group">
+                    <label for="lname">Last Name</label>
+                    <input type="text" name="name[last]" class="form-control" id="lname"
+                    placeholder="Last Name" required>
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input type="password" name="password" id="password" class="form-control" placeholder="Password">
+                    <input type="password" name="password" id="password" class="form-control" placeholder="Password" required>
                 </div>
                 <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
             </div>
