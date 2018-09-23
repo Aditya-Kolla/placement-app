@@ -5,7 +5,7 @@ var companySchema = new mongoose.Schema({
     name: String,
     logo: String,
     about: String,
-    created: {type: Date, default: Date.now}
+    created: {type: Date, default: Date.now},
 });
 
 module.exports = mongoose.model("Company", companySchema);

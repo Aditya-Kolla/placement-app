@@ -1,5 +1,22 @@
-.container.main {
-    margin-top: 5.0em;
+* {
+    font-family: 'Raleway', sans-serif;
+    
+}
+
+h5 {
+    font-weight: 700;
+}
+
+.main { 
+    padding: 2.0em;
+    background: #EFECCA;
+    min-height: 100vh;
+}
+.container{
+    background: #E6E2AF;
+    padding: 2.0em; 
+    margin: 0.5em;
+
 }
 
 .card{
@@ -17,6 +34,34 @@
     margin: 0 auto;
 }
 
+.profile-hr{
+    height: 12px;
+    border: 0;
+    margin-top: 0;
+    box-shadow: inset 0 12px 12px -12px rgba(0, 0, 0, 0.5);
+}
+
+.profile-list{
+    list-style: none;
+    padding: 0;
+}
+
+li>span{
+    font-weight: 700;
+}
+
+.profile-icon{
+    font-weight: normal;
+    float: right;
+}
+
 #delete{
     display: inline;
+}
+
+.profile-image {
+    width: 70%;
+    height: auto;
+    margin-bottom: 8px;  
+    border-radius: 10%;
 }
