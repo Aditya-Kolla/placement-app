@@ -1,0 +1,41 @@
+<% include ../partials/header %>
+
+<% if(currentUser){ %>
+  <div class="wrapper">
+    <div class="container">
+      <div class="row">
+        <div  class="col-sm-3">
+          <img class="img-fluid profile-image" src="https://www.ibts.org/wp-content/uploads/2017/08/iStock-476085198-300x300.jpg">
+          <h5><%= currentUser.name.first + " " + currentUser.name.last %></h5>
+          <p >Age: <%=currentUser.age%> &nbsp;&nbsp;&nbsp; Gender: <%=currentUser.gender%></p>
+        </div>
+        
+        <div class="col-sm-9">
+          <div>
+            <h4>Personal Information <a href="/profile/edit"><i class="profile-icon fas fa-edit"></i></a></h4>
+            <hr class="profile-hr">
+            <ul class="profile-list">
+              <li><span>Registration Number:</span> <%=currentUser.regNumber%></li>
+              <li><span>Outlook ID:</span> <%=currentUser.username%></li>
+              <li><span>Secondary Email:</span> <%=currentUser.email%></li>
+              <li><span>Phone Number:</span> <%=currentUser.phone%></li>
+            </ul>
+            <h4>Academics</h4>
+            <hr class="profile-hr">
+            <ul class="profile-list">
+              <li>
+                <span>Branch:</span> <%=currentUser.branch%></li>
+              <li>
+                <span>CGPA:</span> <%=currentUser.cgpa%></li>
+              <li>
+                <span>Class 10th CGPA</span> 9.4 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <span>Class 12th CGPA:</span> 9.0</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% } %>
+
+<% include ../partials/footer %>

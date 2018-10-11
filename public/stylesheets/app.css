@@ -7,16 +7,15 @@ h5 {
     font-weight: 700;
 }
 
-.main { 
+.wrapper { 
     padding: 2.0em;
-    background: #EFECCA;
+    background: #F5F5F5;
     min-height: 100vh;
 }
 .container{
-    background: #E6E2AF;
+    background: #E3E3E3;
     padding: 2.0em; 
     margin: 0.5em;
-
 }
 
 .card{
@@ -46,13 +45,12 @@ h5 {
     padding: 0;
 }
 
-li>span{
-    font-weight: 700;
-}
+
 
 .profile-icon{
     font-weight: normal;
     float: right;
+    color: black;
 }
 
 #delete{
@@ -64,4 +62,8 @@ li>span{
     height: auto;
     margin-bottom: 8px;  
     border-radius: 10%;
+}
+
+.form-row{
+    margin-bottom: 8px;
 }

@@ -1,15 +1,17 @@
 <% include ../partials/header %>
-<div class="container main">
-    <div class="center-container jumbotron">
-    <h1><%=company.name%></h1>
-    <img src="<%=company.logo%>" class="img-fluid img-thumbnails rounded" alt="Logo of the company">
-    <p class="lead">
-        <%- company.about %>
-    </p>
-    <a  href= "/companies/<%=company._id%>/edit" class="btn btn-lg btn-info">Edit</a>
-    <form action="/companies/<%= company._id %>?_method=DELETE" method="POST" id="delete">
-        <button class="btn btn-danger btn-lg">Delete</button>
-    </form
+<div class="wrapper">
+    <div class="container">
+        <div class="center-container jumbotron">
+        <h1><%=company.name%></h1>
+        <img src="<%=company.logo%>" class="img-fluid img-thumbnails rounded" alt="Logo of the company">
+        <p class="lead">
+            <%- company.about %>
+        </p>
+        <a  href= "/companies/<%=company._id%>/edit" class="btn btn-lg btn-info">Edit</a>
+        <form action="/companies/<%= company._id %>?_method=DELETE" method="POST" id="delete">
+            <button class="btn btn-danger btn-lg">Delete</button>
+        </form>
+        </div>
     </div>
 </div>
 <% include ../partials/footer %>

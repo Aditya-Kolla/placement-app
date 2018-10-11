@@ -6,10 +6,20 @@ let UserSchema = new mongoose.Schema({
     password: String,
     name: {
         first: String,
-        middle: String,
-        last: String
+        middle: { type: String, trim: true},
+        last: { type: String, trim: true }
     },
-    image: { type: String, default: "https://eabiawak.com/wp-content/uploads/2017/07/photo.png"}
+    regNumber: Number,
+    address: String,
+    age: { type: String, min: 0 },
+    gender: String,
+    email: String,
+    phone: Number,
+    image: { type: String, default: "https://eabiawak.com/wp-content/uploads/2017/07/photo.png"},
+
+    branch: String,
+    cgpa: Number,
+    created: {type: Date, default: Date.now()}
 });
 
 UserSchema.plugin(passportLocalMongoose);

@@ -1,6 +1,7 @@
 const express   = require('express'),
     router      = express.Router(),
     passport    = require('passport'),
+    middleware = require('../middleware');
     User        = require('../models/user');
 
 //Direct Route
@@ -23,7 +24,7 @@ router.post("/signup", (req, res) => {
             return res.render("signup");
         }
         passport.authenticate("local")(req, res, () => {
-            res.redirect("/profile");
+            res.redirect("/profile/edit");
         });
     });
 });
@@ -41,14 +42,30 @@ router.post("/login", passport.authenticate("local", {
 });
 
 //Handle logout logic
-router.get("/logout", (req, res) => {
+router.get("/logout", middleware.isLoggedIn, (req, res) => {
     req.logout();
     res.redirect("/");
 });
 
 //User profile routes
-router.get("/profile", (req, res) => {
-    res.render("profile");
+router.get("/profile", middleware.isLoggedIn, (req, res) => {
+    res.render("users/profile");
+});
+
+//Edit profile - get edit page
+router.get("/profile/edit", middleware.isLoggedIn,(req, res) => {
+    res.render("users/edit");
+});
+
+//Edit profile - put request
+router.put("/profile", middleware.isLoggedIn,(req, res) => {
+    User.findByIdAndUpdate(req.user.id, req.body.user, (err, updatedUser) => {
+        if(err){
+            res.redirect("/profile");
+        } else {
+            res.redirect("/profile");
+        }
+    })
 });
 
 //Wrong link
