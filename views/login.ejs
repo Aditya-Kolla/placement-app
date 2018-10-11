@@ -1,20 +1,22 @@
 <% include ./partials/header %>
 
-<div class="container">
-  <form action="/login" method="POST" style="width: 30%; margin: 10% 30% 50% 70%">
-    <div >
-      <div class="form-group">
-        <label for="username">Registration Number</label>
-        <input type="text" name="username" id="username" class="form-control" placeholder="Username">
-        <small id="usernameHelp" class="form-text text-muted">Same as your registration number.</small>
+<div class="wrapper">
+  <div class="container">
+    <form action="/login" method="POST" style="width: 30%; margin: 10% 30% 50% 70%">
+      <div >
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" name="username" id="username" class="form-control" placeholder="Username">
+          <small id="usernameHelp" class="form-text text-muted">Same as your Outlook ID.</small>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" name="password" id="password" class="form-control" placeholder="Password">
+        </div>
+          <button type="submit" class="btn btn-primary btn-block">Login</button>
       </div>
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" name="password" id="password" class="form-control" placeholder="Password">
-      </div>
-        <button type="submit" class="btn btn-primary btn-block">Login</button>
-    </div>
-  </form>
+    </form>
+  </div>
 </div>
 
 <% include ./partials/footer %>

@@ -1,0 +1,107 @@
+<% include ../partials/header %>
+
+  <% if(currentUser){ %>
+    <div class="wrapper">
+      <div class="container">
+        <form action="/profile?_method=PUT" method="POST">
+          <div class="row">
+            <div class="col-sm-3">
+              <img class="img-fluid profile-image" src="https://www.ibts.org/wp-content/uploads/2017/08/iStock-476085198-300x300.jpg">
+
+              
+                  <input class="form-control form-control-sm" name="user[name.first]" type="text" placeholder="First name" value="<%= currentUser.name.first%>" required>
+                  <input class="form-control form-control-sm" name="user[name.middle]" type="text"   placeholder="Middle Name" value="<%= currentUser.name.middle%>"> 
+                  <input class="form-control form-control-sm" name="user[name.last]" type="text" placeholder="Last Name" value="<%= currentUser.name.last%>" required>
+
+              <div class="form-row">
+                <div class="col-sm-4">
+                  <p>Age*<input class="form-control form-control-sm" type="number" value="<%=currentUser.age%>" name="user[age]" required> </p>
+                </div>
+                <div class="col-sm-4">
+                  <p>Gender* <select class="form-control form-control-sm" name="user[gender]" required>
+                      <option value="Male">Male</option>
+                      <option value="Female">Female</option>
+                      <option value="Other">Other</option>
+                    </select> 
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-9">
+              <h4>Personal Information</h4>
+              <hr class="profile-hr">
+              <ul class="profile-list">
+                <li>
+                  <div class="form-row">
+                    <div class="col-sm-3">
+                      <span>Registration Number*</span>
+                    </div>
+                    <div class="col-sm-3">
+                      <input class="form-control form-control-sm" type="number" value="<%=currentUser.regNumber%>" name="user[regNumber]" required>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="form-row">
+                    <div class="col-sm-3">
+                      <span>Outlook ID*</span>
+                    </div>
+                    <div class="col-sm-3">
+                      <input class="form-control form-control-sm" type="email" value="<%=currentUser.username%>" name="user[username]" disabled>
+                    </div>
+                  </div>
+                <li>
+                  <div class="form-row">
+                    <div class="col-sm-3">
+                      <span>Secondary Email</span>
+                    </div>
+                    <div class="col-sm-3">
+                      <input class="form-control form-control-sm" name="user[email]" type="email" value="<%=currentUser.email%>">
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="form-row">
+                    <div class="col-sm-3">
+                      <span>Phone Number*</span>
+                    </div>
+                    <div class="col-sm-3">
+                      <input class="form-control form-control-sm" name="user[phone]" type="tel" value="<%=currentUser.phone%>" required>
+                    </div>
+                  </div>
+              </ul>
+              <h4>Academics</h4>
+              <hr class="profile-hr">
+              <ul class="profile-list">
+                <li>
+                  <div class="form-row">
+                    <div class="col-sm-3">
+                      <span>Branch*</span>
+                    </div>
+                    <div class="col-sm-3">
+                      <input class="form-control form-control-sm" name="user[branch]" type="text" value="<%=currentUser.branch%>" required>
+                    </div>
+                  </div>
+                <li>
+                  <div class="form-row">
+                    <div class="col-sm-3">
+                      <span>CGPA*</span>
+                    </div>
+                    <div class="col-sm-3">
+                      <input class="form-control form-control-sm" name="user[cgpa]" type="number" value="<%=currentUser.cgpa%>" required>
+                    </div>
+                  </div>
+                <li>
+                  <span>Class 10th CGPA</span> 9.4 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <span>Class 12th CGPA:</span> 9.0</li>
+              </ul>
+              <input type="submit" class="btn btn-primary btn-md">
+              <a href="/profile" class="btn btn-danger btn-md">Cancel</a>
+            </div>
+          </div>
+        </form>
+      </div>
+     </div>
+  <% } %>
+<% include ../partials/footer %>
